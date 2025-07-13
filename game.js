@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Game Variables
     let player, enemies, expGems, projectiles;
     let camera;
-    let gameTime, level, exp;
+    let gameTime, level, exp, score;
     let touch = { x: null, y: null, active: false };
 
     const gameArea = { width: 2000, height: 2000 };
@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gameTime = 0;
         level = 1;
         exp = 0;
+        score = 0;
 
         camera = {
             x: player.x - canvas.width / 2,
@@ -146,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if(enemy.hp <= 0) {
                             spawnExpGem(enemy.x, enemy.y);
                             enemies.splice(eIndex, 1);
+                            score += 100; // Add score
                         }
                         projectiles.splice(pIndex, 1);
                     }
@@ -185,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
                      if(enemy.hp <= 0) {
                         spawnExpGem(enemy.x, enemy.y);
                         enemies.splice(eIndex, 1);
+                        score += 100; // Add score
                     }
                 }
             });
@@ -280,6 +283,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const seconds = Math.floor((gameTime % 60000) / 1000);
         timerDisplay.textContent = `Time: ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 
+        // Score
+        document.getElementById('score').textContent = `Score: ${score}`;
+
         // HP Bar
         hpBar.style.width = `${(player.hp / player.maxHp) * 100}%`;
         hpBar.style.backgroundColor = player.hp / player.maxHp > 0.5 ? '#00ff00' : player.hp / player.maxHp > 0.2 ? '#ffff00' : '#ff0000';
@@ -363,6 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutes = Math.floor(gameTime / 60000);
         const seconds = Math.floor((gameTime % 60000) / 1000);
         finalTimeDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        document.getElementById('final-score').textContent = score;
         gameOverModal.style.display = 'block';
     }
     
