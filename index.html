@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>ギミックサバイバー</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="start-screen">
+        <h1>ギミックサバイバー</h1>
+        <div id="instructions">
+            <h2>あそびかた</h2>
+            <p><strong>操作方法:</strong><br>画面のどこかをタッチしてドラッグすると、その方向にキャラクターが移動します。</p>
+            <p><strong>ゲームの目的:</strong><br>敵を倒してジェムを集め、レベルアップしながら5分間生き延びよう！</p>
+            <p><strong>武器紹介:</strong></p>
+            <ul>
+                <li><strong>周回オーブ:</strong> あなたの周りを回り、敵を蹴散らす！</li>
+                <li><strong>追尾ミサイル:</strong> 近くの敵を自動で追いかけて攻撃！</li>
+            </ul>
+        </div>
+        <button id="start-button">ゲーム開始</button>
+    </div>
+    <div id="game-container" style="display: none;">
+        <canvas id="game-canvas"></canvas>
+        <div id="ui-container">
+            <div id="timer">Time: 00:00</div>
+            <div id="hp-bar-container">
+                <div id="hp-bar"></div>
+            </div>
+            <div id="level-up-modal" style="display: none;">
+                <h2>レベルアップ！</h2>
+                <p>アップグレードを選択してください:</p>
+                <div id="upgrade-options"></div>
+            </div>
+        </div>
+        <div id="game-over-modal" style="display: none;">
+            <h2>ゲームオーバー</h2>
+            <p>生存時間: <span id="final-time"></span></p>
+            <button id="retry-button">もう一度挑戦</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
