@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let touch = { x: null, y: null, active: false };
 
     const gameArea = { width: 2000, height: 2000 };
-    const gameDuration = 5 * 60 * 1000; // 5 minutes
+    const gameDuration = 1 * 60 * 1000; // 1 minute
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
